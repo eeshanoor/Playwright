@@ -11,14 +11,21 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
+        node-version: '18'
+
+    - name: Install latest npm
+      run: npm install -g npm@latest
+
     - name: Install dependencies
       run: npm install
+
     - name: Run tests
-      run: npm test
+      run: npm test --verbose
+
     - name: Upload test reports
       uses: actions/upload-artifact@v3
       with:
