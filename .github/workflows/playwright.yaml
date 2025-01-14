@@ -1,7 +1,10 @@
-name: Test Workflow
+name: Playwright Test
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
@@ -10,24 +13,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
         node-version: '18'
 
-    - name: Install compatible npm version
-      run: npm install -g npm@8
-
     - name: Install dependencies
       run: npm install
 
     - name: Run tests
-      run: npm test --verbose
+      run: npm test
 
     - name: Upload test reports
       uses: actions/upload-artifact@v3
       with:
         name: test-report
-        path: ./test-reports
+        path: playwright-report
