@@ -31,6 +31,8 @@ jobs:
           npx playwright install --with-deps  # Install browsers (needed for GitHub Actions runners)
           npx playwright test  # Run Playwright tests
 
+
+          
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v2
