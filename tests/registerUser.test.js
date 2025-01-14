@@ -22,9 +22,7 @@ test('Register User with Random Data', async ({ page }) => {
     randomMobile
   } = generateRandomData();
 
-  // 1. Launch browser (handled by Playwright)
-  
-  // 2. Navigate to url 'http://automationexercise.com'
+
   await homePage.navigateToHomePage();
 
   // 3. Verify that home page is visible successfully
@@ -38,6 +36,8 @@ test('Register User with Random Data', async ({ page }) => {
 
   // 6. Enter random name and email address
   await signUpPage.enterNameAndEmail(randomName, randomEmail);
+
+  console.log('Test ABC ');
 
   // 7. Click 'Signup' button
   await signUpPage.clickSignUpButton();
